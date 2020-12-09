@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-tabs>
+              <ion-tab-bar slot="top">
+                <ion-tab-button tab="jornada">
+                  <ion-icon name="football-outline"></ion-icon>
+                  <ion-label>Jornada</ion-label>
+                </ion-tab-button>
+              </ion-tab-bar>
+            </ion-tabs>
+          </ion-col>
+
+          <ion-col>
+            <ion-tabs routerLink="/clasificacion">
+              <ion-tab-bar slot="top">
+                <ion-tab-button tab="clasificacion">
+                  <ion-icon name="list-outline"></ion-icon>
+                  <ion-label>Clasificacion</ion-label>
+                </ion-tab-button>
+              </ion-tab-bar>
+            </ion-tabs>
+          </ion-col>
+          <br />
+          <br />
+          <br />
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-item>
+      <ion-title style="text-align: center">Jornadas</ion-title>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let jornada of jornadas">
+    <ion-card-header>
+      <ion-card-subtitle>Jornada {{jornada.numeroJornada+1}}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item color="primary" style="text-align: center; font-size: small">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="5"> Local </ion-col>
+            <ion-col size="2"> : </ion-col>
+            <ion-col size="5"> Visitante </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+
+      <ion-item color="success" style="text-align: center; font-size: small">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="4">
+              {{jornada.local.nombre.substring(0,3)}}
+            </ion-col>
+            <ion-col size="4">
+              {{jornada.golesLocal}} : {{jornada.golesVisitante}}
+            </ion-col>
+            <ion-col size="4">
+              {{jornada.visitante.nombre.substring(0,3)}}
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+<ion-footer>
+  <ion-button style="margin-left: 18%" color="success" (click)="pasarJornada()">
+    Siguiente jornada
+    <ion-icon slot="end" name="caret-forward"></ion-icon>
+  </ion-button>
+</ion-footer>
